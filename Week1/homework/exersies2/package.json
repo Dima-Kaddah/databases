@@ -1,0 +1,15 @@
+{
+  "name": "exersies2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ex2.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dima Kaddah",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "util": "^0.12.2"
+  }
+}
