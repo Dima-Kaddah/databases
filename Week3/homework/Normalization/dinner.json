@@ -1,0 +1,32 @@
+[
+  {
+    "dinner_id": "D00001001",
+    "dinner_date": "2020-03-15",
+    "venue_code": "B01",
+    "venue_description": "Grand Ball Room"
+  },
+  {
+    "dinner_id": "D00001002",
+    "dinner_date": "2020-03-15",
+    "venue_code": "B02",
+    "venue_description": "Zoku Roof Top"
+  },
+  {
+    "dinner_id": "D00001003",
+    "dinner_date": "2020-03-20",
+    "venue_code": "B03",
+    "venue_description": "Goat Farm"
+  },
+  {
+    "dinner_id": "D00001004",
+    "dinner_date": "2020-03-20",
+    "venue_code": "B04",
+    "venue_description": "Mama's Kitchen"
+  },
+  {
+    "dinner_id": "D00001005",
+    "dinner_date": "2020-03-20",
+    "venue_code": "B05",
+    "venue_description": "Hungry Hungary"
+  }
+]

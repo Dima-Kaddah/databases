@@ -1,0 +1,42 @@
+[
+  {
+    "member_id": 1,
+    "member_name": "Amit",
+    "member_address": "325 Max park"
+  },
+  {
+    "member_id": 2,
+    "member_name": "Ben",
+    "member_address": "24 Hudson lane"
+  },
+  {
+    "member_id": 3,
+    "member_name": "Cristina",
+    "member_address": "516 6th Ave"
+  },
+  {
+    "member_id": 4,
+    "member_name": "Dan",
+    "member_address": "89 John St"
+  },
+  {
+    "member_id": 5,
+    "member_name": "Ema",
+    "member_address": "91 Pixar St"
+  },
+  {
+    "member_id": 6,
+    "member_name": "Fatima",
+    "member_address": "56 8th Ave"
+  },
+  {
+    "member_id": 7,
+    "member_name": "Gabor",
+    "member_address": "54 Vivaldi St"
+  },
+  {
+    "member_id": 8,
+    "member_name": "Hema",
+    "member_address": "9 Peter St"
+  }
+]

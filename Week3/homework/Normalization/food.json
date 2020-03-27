@@ -1,0 +1,47 @@
+[
+  {
+    "food_id": 101,
+    "food_code": "C1",
+    "food_description": "Curry"
+  },
+  {
+    "food_id": 102,
+    "food_code": "C2",
+    "food_description": "Cake"
+  },
+  {
+    "food_id": 103,
+    "food_code": "F1",
+    "food_description": "Falafal"
+  },
+  {
+    "food_id": 104,
+    "food_code": "G1",
+    "food_description": "Goulash"
+  },
+  {
+    "food_id": 105,
+    "food_code": "M1",
+    "food_description": "Mousse"
+  },
+  {
+    "food_id": 106,
+    "food_code": "P1",
+    "food_description": "Pie"
+  },
+  {
+    "food_id": 107,
+    "food_code": "P2",
+    "food_description": "Pasca"
+  },
+  {
+    "food_id": 108,
+    "food_code": "S1",
+    "food_description": "Soup"
+  },
+  {
+    "food_id": 109,
+    "food_code": "T1",
+    "food_description": "Tea"
+  }
+]
