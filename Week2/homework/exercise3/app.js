@@ -16,16 +16,25 @@ const connection = mysql.createConnection({
 const executeQuery = util.promisify(connection.query.bind(connection));
 
 async function seedDatabase() {
-  const collaborators = `select a.author_name, r.paper_title from authors as A, Research_Papers as R where A.author_no = R.author;`;
-  const collaborators2 = `select a.paper_title, r.author_name from Research_Papers as A, authors as R where A.author = R.author_no;`;
-  const leftJoin = `select * from authors as A left join Research_Papers as r on r.author = a.author_no;`;
+  const authorsAndcollaborators = `
+  select * from Authors a
+  join Author_Papers c
+  on (a.author_no = c.author_no)
+  join Research_Papers b
+  on (b.paper_id = c.paper_id);`;
+
+  const AuthorAndPapersTitle = `
+  select a.author_name,b.paper_title from Authors a
+  join Author_Papers c
+  on (a.author_no = c.author_no)
+  join Research_Papers b
+  on (b.paper_id = c.paper_id);`;
 
   connection.connect();
 
   try {
-    console.log(await executeQuery(collaborators));
-    console.log(await executeQuery(collaborators2));
-    console.log(await executeQuery(leftJoin));
+    console.log(await executeQuery(authorsAndcollaborators));
+    console.log(await executeQuery(AuthorAndPapersTitle));
 
     connection.end();
   } catch (error) {
