@@ -21,22 +21,57 @@ const connection = mysql.createConnection({
 const executeQuery = util.promisify(connection.query.bind(connection));
 
 async function seedDatabase() {
-  const numOfAuthors = `select count(author)from research_papers as R group by r.paper_title;`;
-  const femaleAuthors = `select count(paper_title) from research_papers as r inner join authors as A on a.author_no=r.author where a.gender='f';`;
-  const avgHindex = `select avg(h_index)from authors as a inner join research_papers as r on a.author_no=r.author;`;
-  const avgHindexCountry = `select avg(h_index),country from authors as a inner join research_papers as r on a.author_no=r.author group by a.country;`;
-  const numOfResPapersPerountry = `select count(r.paper_id),a.country from research_papers as r inner join authors as A on a.author_no=r.author group by a.country;`;
-  const minMaxHindex = `select min(a.h_index),max(a.h_index),a.country from authors as a left join research_papers as r on a.author_no=r.author group by a.country;`;
+  //1
+  const numOfWrAuthors = `SELECT b.paper_title,
+  COUNT(DISTINCT a.author_no) 
+  AS 'Authors Number'
+  FROM Authors a RIGHT JOIN Author_Papers c 
+  ON (a.author_no = c.author_no)
+  RIGHT JOIN Research_Papers b 
+  ON (c.paper_id = b.paper_id)
+  GROUP BY b.paper_title;`;
+
+  //2
+  const sumRPFemale = `SELECT a.gender ,COUNT(DISTINCT b.paper_id)
+  AS 'Sum of female Authors'
+  FROM Authors a 
+  LEFT JOIN Author_Papers c
+  ON (a.author_no = c.author_no)
+  LEFT JOIN Research_Papers b
+  ON (c.paper_id = b.paper_id) 
+  where a.gender="f";`;
+
+  //3
+  const avgHindexCountry = `SELECT AVG(a.h_index)
+  AS 'average of h-index',
+  a.country FROM Authors a
+  group by a.country;`;
+
+  //4
+  const SumRP = `SELECT a.country ,COUNT(DISTINCT b.paper_id)
+  AS 'Sum of the Research Papers'
+  FROM Authors a 
+  LEFT JOIN Author_Papers c 
+  ON (a.author_no = c.author_no) 
+  LEFT JOIN Research_Papers b 
+  ON (c.paper_id = b.paper_id) 
+  GROUP BY a.country;`;
+
+  //5
+  const MaxAndMinh_indx = `SELECT MIN(a.h_index)
+  AS 'MIN of h-index',
+  MAX(a.h_index) AS 'MAX of h-index',
+  a.country FROM Authors a 
+  GROUP BY a.country;`;
 
   connection.connect();
 
   try {
-    console.log(await executeQuery(numOfAuthors));
-    console.log(await executeQuery(femaleAuthors));
-    console.log(await executeQuery(avgHindex));
+    console.log(await executeQuery(numOfWrAuthors));
+    console.log(await executeQuery(sumRPFemale));
     console.log(await executeQuery(avgHindexCountry));
-    console.log(await executeQuery(numOfResPapersPerountry));
-    console.log(await executeQuery(minMaxHindex));
+    console.log(await executeQuery(SumRP));
+    console.log(await executeQuery(MaxAndMinh_indx));
 
     connection.end();
   } catch (error) {
