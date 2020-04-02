@@ -17,16 +17,16 @@ const executeQuery = util.promisify(connection.query.bind(connection));
 
 async function seedDatabase() {
   const create_authors_table = `CREATE TABLE IF NOT EXISTS Authors (
-    author_no int NOT NULL AUTO_INCREMENT,
+    author_no int PRIMARY KEY,
     author_name varchar(50),
     country varchar(50),
     date_of_birth DATE,
     h_index int (8) ZEROFILL,
-    gender enum('f','m'),
-    CONSTRAINT PK_Authors PRIMARY KEY (author_no));`;
-  const add_friend_column = `ALTER TABLE Authors ADD COLUMN Friend int NOT NULL;`;
+    gender enum('f','m'));`;
+
+  const add_friend_column = `ALTER TABLE Authors ADD COLUMN friend int;`;
   const add_foreign_key = `ALTER TABLE Authors ADD CONSTRAINT
-   FK_Authors FOREIGN KEY(Friend) REFERENCES Authors(author_no);`;
+   FK_friend_author FOREIGN KEY(friend) REFERENCES Authors(author_no);`;
 
   connection.connect();
 
