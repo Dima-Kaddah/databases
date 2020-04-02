@@ -7,6 +7,7 @@ const authors = [
     date_of_birth: '1877-07-02',
     h_index: 23045,
     gender: 'm',
+    friend: 1,
   },
 
   {
@@ -16,6 +17,7 @@ const authors = [
     date_of_birth: '1564-04-26',
     h_index: 6197,
     gender: 'm',
+    friend: 2,
   },
 
   {
@@ -25,6 +27,7 @@ const authors = [
     date_of_birth: '1812-02-07',
     h_index: 8960,
     gender: 'm',
+    friend: 3,
   },
 
   {
@@ -34,6 +37,7 @@ const authors = [
     date_of_birth: '1882-01-25',
     h_index: 2991,
     gender: 'f',
+    friend: 4,
   },
 
   {
@@ -43,6 +47,7 @@ const authors = [
     date_of_birth: '1888-05-13',
     h_index: 9428,
     gender: 'm',
+    friend: 5,
   },
 
   {
@@ -52,6 +57,7 @@ const authors = [
     date_of_birth: '1890-09-15',
     h_index: 8769,
     gender: 'f',
+    friend: 6,
   },
 
   {
@@ -61,6 +67,7 @@ const authors = [
     date_of_birth: '1929-05-12',
     h_index: 68765,
     gender: 'f',
+    friend: 7,
   },
 
   {
@@ -70,6 +77,7 @@ const authors = [
     date_of_birth: '1949-01-12',
     h_index: 6747,
     gender: 'm',
+    friend: 8,
   },
 
   {
@@ -79,6 +87,7 @@ const authors = [
     date_of_birth: '1962-08-10',
     h_index: 7903,
     gender: 'f',
+    friend: 9,
   },
 
   {
@@ -88,6 +97,7 @@ const authors = [
     date_of_birth: '1960-11-10',
     h_index: 9818,
     gender: 'm',
+    friend: 10,
   },
 
   {
@@ -97,6 +107,7 @@ const authors = [
     date_of_birth: '1947-08-24',
     h_index: 9898,
     gender: 'm',
+    friend: 11,
   },
 
   {
@@ -106,6 +117,7 @@ const authors = [
     date_of_birth: '1932-10-27',
     h_index: 92853,
     gender: 'f',
+    friend: 12,
   },
 
   {
@@ -115,6 +127,7 @@ const authors = [
     date_of_birth: '1899-06-21',
     h_index: 95231,
     gender: 'm',
+    friend: 13,
   },
 
   {
@@ -124,6 +137,7 @@ const authors = [
     date_of_birth: '1905-02-20',
     h_index: 78312,
     gender: 'f',
+    friend: 14,
   },
 
   {
@@ -133,6 +147,7 @@ const authors = [
     date_of_birth: '1964-05-22',
     h_index: 7648,
     gender: 'm',
+    friend: 15,
   },
 ];
 

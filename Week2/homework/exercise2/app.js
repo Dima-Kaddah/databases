@@ -9,6 +9,7 @@ const mysql = require('mysql');
 const util = require('util');
 const authors = require('./authorsData');
 const paperData = require('./ResearchPapersData');
+const relationshipTable = require('./Author_Papers');
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -22,16 +23,24 @@ const executeQuery = util.promisify(connection.query.bind(connection));
 async function seedDatabase() {
   const create_Research_Papers_table = `
     CREATE TABLE IF NOT EXISTS Research_Papers (
-    paper_id int (4) ZEROFILL NOT NULL,
-    paper_title varchar(30),
-    publish_date DATE,
-    author int (4) ZEROFILL NOT NULL,
-    CONSTRAINT FK_AUTHOR FOREIGN KEY (author) REFERENCES Authors(author_no));`;
+    paper_id int PRIMARY KEY,
+    paper_title varchar(50),
+    publish_date DATE)`;
+
+  // in this table we need to make composite key that mean two key are p_k in this table
+  const create_Author_Papers_table = `
+    CREATE TABLE IF NOT EXISTS Author_Papers (
+    author_no int,
+    paper_id int,
+    CONSTRAINT FOREIGN KEY (author_no) REFERENCES Authors(author_no),
+    CONSTRAINT FOREIGN KEY(paper_id) REFERENCES Research_Papers(paper_id),
+    CONSTRAINT PK_Author_Paper PRIMARY KEY(author_no, paper_id));`;
 
   connection.connect();
 
   try {
     await executeQuery(create_Research_Papers_table);
+    await executeQuery(create_Author_Papers_table);
 
     await Promise.all(
       authors.map(async author => {
@@ -46,6 +55,13 @@ async function seedDatabase() {
         await executeQuery(entry, book);
       }),
     );
+    await Promise.all(
+      relationshipTable.map(async relation => {
+        const entry = `insert into Author_Papers set ?`;
+        await executeQuery(entry, relation);
+      }),
+    );
+
     connection.end();
   } catch (error) {
     console.error(error);
